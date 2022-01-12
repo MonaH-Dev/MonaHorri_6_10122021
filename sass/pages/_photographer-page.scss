@@ -1,0 +1,28 @@
+.photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+}
+.prez {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  h2 {
+    font-size: 64px;
+    margin-block: 5px;
+    font-weight: normal;
+  }
+  h3,
+  .taglineTxt {
+    margin: 10px;
+    font-weight: normal;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  .taglineTxt {
+    font-size: 18px;
+    color: $color-grey;
+  }
+}

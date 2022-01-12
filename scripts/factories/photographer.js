@@ -21,7 +21,7 @@ function photographerFactory(data, callback = null) {
     taglineTxt.textContent = tagline;
     const pricing = document.createElement("p");
     pricing.className = "pricing";
-    pricing.textContent = `${price} €/jour`;
+    pricing.textContent = `${price}€/jour`;
     article.appendChild(a);
     a.appendChild(img);
     a.appendChild(h2);
@@ -47,7 +47,7 @@ function photographerFactory(data, callback = null) {
     infoLeft.appendChild(taglineTxt);
     const contactButton = document.createElement("button");
     contactButton.className = "contact_button";
-    contactButton.textContent = "Contactez moi";
+    contactButton.textContent = "Contactez-moi";
     contactButton.addEventListener("click", callback);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
