@@ -1,7 +1,10 @@
+#main {
+  margin: 0 100px;
+}
+
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px;
 }
 .prez {
   display: flex;
@@ -24,5 +27,52 @@
   .taglineTxt {
     font-size: 18px;
     color: $color-grey;
+  }
+}
+
+.photograph-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  margin: 30px 0;
+  text-align: center;
+  img {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: 5%;
+  }
+  .prez-img {
+    color: $color-primary;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    margin: 0px 25px;
+    font-size: 26px;
+    h3 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 230px;
+      text-align: left;
+    }
+  }
+}
+
+.bottom-ctr {
+  display: flex;
+  position: fixed;
+  right: 100px;
+  bottom: 0;
+  background-color: $color-accentbg;
+  border-radius: 5% 5% 0 0;
+  width: 10em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+  font-size: 26px;
+  i {
+    margin-left: 5px;
   }
 }

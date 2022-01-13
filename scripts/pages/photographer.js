@@ -49,7 +49,7 @@ function displayLikeNPricing(likes, price) {
 
   const pricing = document.createElement("p");
   pricing.className = "pricing";
-  pricing.textContent = `${price}€/jour`;
+  pricing.textContent = `${price}€ / jour`;
 
   resumeCtr.appendChild(divLike);
   resumeCtr.appendChild(pricing);
@@ -65,9 +65,11 @@ async function init() {
   const userInfoDOM = photographerModel.getUserInfoDOM();
   photographerHeader.appendChild(userInfoDOM);
 
+  // Afficher les media sur la page d'un photographe
   const photographerFirstName = photographer.name.split(" ")[0];
   displayMediaGallery(imgs, photographerFirstName);
 
+  // Afficher le nombre de likes totaux en bas à droite
   displayLikeNPricing(
     imgs.map((img) => img.likes).reduce((a, b) => a + b),
     photographer.price
