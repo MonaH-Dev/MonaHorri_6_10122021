@@ -60,6 +60,16 @@
   }
 }
 
+.lightbox-ctr {
+  position: fixed;
+
+  img {
+    height: 900px;
+    width: 1050px;
+    object-fit: cover;
+  }
+}
+
 .bottom-ctr {
   display: flex;
   position: fixed;

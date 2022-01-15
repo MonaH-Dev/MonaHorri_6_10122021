@@ -30,9 +30,9 @@ async function getPhotographerInfo(id) {
 // Afficher la gallery de media
 function displayMediaGallery(imgs, photographerName) {
   const photographGallery = document.querySelector(".photograph-gallery");
-  imgs.forEach((img) => {
+  imgs.forEach((img, index, imgs_copy) => {
     img.photographerName = photographerName;
-    const imgModel = mediaFactory(img);
+    const imgModel = mediaFactory(img, index, imgs_copy, "#lightbox");
     const article = imgModel.getMediaCardDOM();
     photographGallery.appendChild(article);
   });

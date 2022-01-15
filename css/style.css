@@ -44,7 +44,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  position: absolute;
+  right: 25%;
+  top: 10%;
 }
 
 .modal header {
@@ -196,6 +198,15 @@ header {
   white-space: nowrap;
   width: 230px;
   text-align: left;
+}
+
+.lightbox-ctr {
+  position: fixed;
+}
+.lightbox-ctr img {
+  height: 900px;
+  width: 1050px;
+  object-fit: cover;
 }
 
 .bottom-ctr {
