@@ -10,3 +10,20 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.lightbox-ctr {
+  .closing-LB {
+    right: -5em;
+  }
+  .chevron-left {
+    top: 50%;
+    left: -5em;
+  }
+  .chevron-right {
+    top: 50%;
+    right: -5em;
+  }
+  button {
+    position: absolute;
+  }
+}

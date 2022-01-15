@@ -31,6 +31,21 @@ a {
   cursor: pointer;
 }
 
+.lightbox-ctr .closing-LB {
+  right: -5em;
+}
+.lightbox-ctr .chevron-left {
+  top: 50%;
+  left: -5em;
+}
+.lightbox-ctr .chevron-right {
+  top: 50%;
+  right: -5em;
+}
+.lightbox-ctr button {
+  position: absolute;
+}
+
 #contact_modal {
   display: none;
 }
@@ -202,6 +217,8 @@ header {
 
 .lightbox-ctr {
   position: fixed;
+  top: 5%;
+  margin: auto;
 }
 .lightbox-ctr img {
   height: 900px;

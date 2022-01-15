@@ -82,11 +82,12 @@ function lightBoxFactory(index, imgs) {
     const globalCtr = document.createElement("div");
     globalCtr.className = "lightbox-ctr";
     const closeBtn = document.createElement("button");
+    closeBtn.className = "closing-LB";
     closeBtn.addEventListener("click", () => {
       globalCtr.parentNode.removeChild(globalCtr); //pr fermer la lightbox, on se sert de son parent
     });
     const crossIcon = document.createElement("i");
-    crossIcon.className = "fas fa-cross closing-LB";
+    crossIcon.className = "fas fa-times";
     const img = document.createElement("img");
     img.src = `img/${currentImage.photographerName}/${currentImage.image}`;
     const chevronL = document.createElement("button");
@@ -94,13 +95,15 @@ function lightBoxFactory(index, imgs) {
       setCurrentIndexPrev(img);
     });
     const chevronLIcon = document.createElement("i");
-    chevronLIcon.className = "fas fa-chevron-left chevron-left";
+    chevronL.className = "chevron-left";
+    chevronLIcon.className = "fas fa-chevron-left";
     const chevronR = document.createElement("button");
     chevronR.addEventListener("click", () => {
       setCurrentIndexNext(img);
     });
     const chevronRIcon = document.createElement("i");
-    chevronRIcon.className = "fas fa-chevron-right chevron-right";
+    chevronR.className = "chevron-right";
+    chevronRIcon.className = "fas fa-chevron-right";
     const title = document.createElement("h3");
     title.textContent = title;
 
