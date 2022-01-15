@@ -32,18 +32,26 @@ a {
 }
 
 .lightbox-ctr .closing-LB {
-  right: -5em;
+  right: 5em;
+  top: 10em;
 }
 .lightbox-ctr .chevron-left {
   top: 50%;
-  left: -5em;
+  left: 5em;
 }
 .lightbox-ctr .chevron-right {
   top: 50%;
-  right: -5em;
+  right: 5em;
 }
 .lightbox-ctr button {
   position: absolute;
+}
+.lightbox-ctr h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 10%;
 }
 
 #contact_modal {
@@ -192,7 +200,8 @@ header {
   margin: 30px 0;
   text-align: center;
 }
-.photograph-gallery img {
+.photograph-gallery img,
+.photograph-gallery video {
   height: 300px;
   width: 350px;
   object-fit: cover;
@@ -217,13 +226,19 @@ header {
 
 .lightbox-ctr {
   position: fixed;
-  top: 5%;
-  margin: auto;
+  z-index: 5;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
-.lightbox-ctr img {
-  height: 900px;
-  width: 1050px;
+.lightbox-ctr img,
+.lightbox-ctr video {
+  height: 80%;
+  width: 80%;
   object-fit: cover;
+  margin: 10%;
 }
 
 .bottom-ctr {

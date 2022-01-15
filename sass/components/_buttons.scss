@@ -13,17 +13,25 @@
 
 .lightbox-ctr {
   .closing-LB {
-    right: -5em;
+    right: 5em;
+    top: 10em;
   }
   .chevron-left {
     top: 50%;
-    left: -5em;
+    left: 5em;
   }
   .chevron-right {
     top: 50%;
-    right: -5em;
+    right: 5em;
   }
   button {
     position: absolute;
+  }
+  h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-left: 10%;
   }
 }

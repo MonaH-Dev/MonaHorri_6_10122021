@@ -14,15 +14,25 @@ function mediaFactory(
     likes,
     date,
     price,
+    video,
   } = data;
 
-  const picture = `img/${photographerName}/${image}`;
+  const picture = `img/${photographerName}/${image || video}`;
 
   function getMediaCardDOM() {
     const article = document.createElement("article");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    img.addEventListener("click", (e) => {
+    let mediaElt;
+    if (image) {
+      mediaElt = document.createElement("img");
+      mediaElt.setAttribute("src", picture);
+    } else if (video) {
+      mediaElt = document.createElement("video");
+      mediaElt.innerHTML = `<source src="${picture}" type="video/mp4">
+      <object data="${picture}">
+      </object>`;
+    }
+
+    mediaElt.addEventListener("click", (e) => {
       const lightBox = lightBoxFactory(index, imgs_copy);
       const lightBoxElt = lightBox.createDOMelt();
       document.querySelector(lightboxCtrSelector).appendChild(lightBoxElt);
@@ -40,7 +50,7 @@ function mediaFactory(
     const heartIcon = document.createElement("i");
     heartIcon.className = "fas fa-heart like-heart";
 
-    article.appendChild(img);
+    article.appendChild(mediaElt);
     article.appendChild(div);
     div.appendChild(h3);
     div.appendChild(divLike);
@@ -54,8 +64,27 @@ function mediaFactory(
 
 function lightBoxFactory(index, imgs) {
   let currentIndex = index;
-  let currentImage = imgs[currentIndex];
-  function setCurrentIndexNext(img) {
+  let currentMedia = imgs[currentIndex];
+  const img = document.createElement("img");
+  const video = document.createElement("video");
+  const title = document.createElement("h3");
+  function updateMediaNTitle() {
+    currentMedia = imgs[currentIndex];
+    if (currentMedia.image) {
+      img.src = `img/${currentMedia.photographerName}/${currentMedia.image}`;
+      img.style.display = "block";
+      video.style.display = "none";
+    } else if (currentMedia.video) {
+      const picture = `img/${currentMedia.photographerName}/${currentMedia.video}`;
+      video.innerHTML = `<source src="${picture}" type="video/mp4">
+      <object data="${picture}">
+      </object>`;
+      img.style.display = "none";
+      video.style.display = "block";
+    }
+    title.textContent = currentMedia.title;
+  }
+  function setCurrentIndexNext() {
     if (currentIndex == imgs.length - 1) {
       currentIndex = 0;
     } else {
@@ -64,18 +93,16 @@ function lightBoxFactory(index, imgs) {
     // ou "currentIndex = currentIndex + 1"
     // ou "currentIndex += 1"
     // ou "currentIndex++" (le "++" ne marche qu'avec 1 => incrémenter)
-    currentImage = imgs[currentIndex];
-    img.src = `img/${currentImage.photographerName}/${currentImage.image}`;
+    updateMediaNTitle();
   }
-  function setCurrentIndexPrev(img) {
+  function setCurrentIndexPrev() {
     if (currentIndex == 0) {
       currentIndex = imgs.length - 1;
     } else {
       currentIndex -= 1;
     }
     // ou "currentIndex--"
-    currentImage = imgs[currentIndex];
-    img.src = `img/${currentImage.photographerName}/${currentImage.image}`;
+    updateMediaNTitle();
   }
 
   function createDOMelt() {
@@ -88,24 +115,22 @@ function lightBoxFactory(index, imgs) {
     });
     const crossIcon = document.createElement("i");
     crossIcon.className = "fas fa-times";
-    const img = document.createElement("img");
-    img.src = `img/${currentImage.photographerName}/${currentImage.image}`;
     const chevronL = document.createElement("button");
     chevronL.addEventListener("click", () => {
-      setCurrentIndexPrev(img);
+      setCurrentIndexPrev();
     });
     const chevronLIcon = document.createElement("i");
     chevronL.className = "chevron-left";
     chevronLIcon.className = "fas fa-chevron-left";
     const chevronR = document.createElement("button");
     chevronR.addEventListener("click", () => {
-      setCurrentIndexNext(img);
+      setCurrentIndexNext();
     });
     const chevronRIcon = document.createElement("i");
     chevronR.className = "chevron-right";
     chevronRIcon.className = "fas fa-chevron-right";
-    const title = document.createElement("h3");
-    title.textContent = title;
+
+    updateMediaNTitle();
 
     globalCtr.appendChild(closeBtn);
     globalCtr.appendChild(chevronL);
@@ -113,6 +138,7 @@ function lightBoxFactory(index, imgs) {
     globalCtr.appendChild(chevronR);
     chevronR.appendChild(chevronRIcon);
     globalCtr.appendChild(img);
+    globalCtr.appendChild(video);
     globalCtr.appendChild(title);
     closeBtn.appendChild(crossIcon);
 
