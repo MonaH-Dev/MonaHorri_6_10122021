@@ -33,7 +33,7 @@ a {
 
 .lightbox-ctr .closing-LB {
   right: 5em;
-  top: 10em;
+  top: 5em;
 }
 .lightbox-ctr .chevron-left {
   top: 50%;
@@ -227,10 +227,10 @@ header {
 .lightbox-ctr {
   position: fixed;
   z-index: 5;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
-  right: 4px;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 .lightbox-ctr img,
@@ -238,7 +238,7 @@ header {
   height: 80%;
   width: 80%;
   object-fit: cover;
-  margin: 10%;
+  margin: 5% 10%;
 }
 
 .bottom-ctr {

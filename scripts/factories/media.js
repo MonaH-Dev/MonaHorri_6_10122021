@@ -46,7 +46,11 @@ function mediaFactory(
     const nLike = document.createElement("span");
     nLike.textContent = likes;
     const buttonLike = document.createElement("button");
-    buttonLike.addEventListener("click", onLikeIncrement);
+    buttonLike.addEventListener("click", () => {
+      onLikeIncrement(); // update le nbre total de coeurs (ds bottom-Ctr)
+      const newLike = parseInt(nLike.textContent) + 1; //update le nbre coeur
+      nLike.textContent = newLike; // afficher le nbre de coeur
+    }); // on peut ne pas mettre les "()" à e à une Fn fléchée si 1 seul paramètre
     const heartIcon = document.createElement("i");
     heartIcon.className = "fas fa-heart like-heart";
 
