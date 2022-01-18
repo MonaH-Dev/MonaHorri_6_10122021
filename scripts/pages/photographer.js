@@ -71,22 +71,57 @@ function displayLikeNPricing(likes, price) {
   divLike.appendChild(heartIcon);
 }
 
+let sortedImgs = []; // "sorted" => trié en anglais
+let photographerFirstName;
+
+function onUpdateFilterSelect() {
+  //"on..." pr une Fn qui va s'exécuter lors d'un EventListerner
+  const prop = document.querySelector("#filter-select").value; //prop = attribut du nom du media par lequel le tri sera fait
+  sortedImgs = sortedImgs.sort((a, b) => {
+    if (a[prop] < b[prop]) {
+      if (prop == "title") {
+        return -1;
+      }
+      return 1;
+    } else {
+      if (prop == "title") {
+        return 1;
+      }
+      return -1;
+    }
+  });
+  const photographerGallery = document.querySelector(".photograph-gallery");
+  photographerGallery.innerHTML = "";
+  displayMediaGallery(sortedImgs, photographerFirstName);
+  // console.log(sortedImgs.map((img) => img[prop]));
+}
+
+function addFilterListener() {
+  document
+    .querySelector("#filter-select")
+    .addEventListener("change", onUpdateFilterSelect);
+}
+
 async function init() {
   const id = getPhotographerIdByURLParam();
   const { photographer, imgs } = await getPhotographerInfo(id);
   const photographerHeader = document.querySelector(".photograph-header");
+  sortedImgs = [...imgs]; // création d'une copie du table "imgs"
   const photographerModel = photographerFactory(photographer, displayModal);
   const userInfoDOM = photographerModel.getUserInfoDOM();
   photographerHeader.appendChild(userInfoDOM);
 
   // Afficher les media sur la page d'un photographe
-  const photographerFirstName = photographer.name.split(" ")[0];
-  displayMediaGallery(imgs, photographerFirstName);
+  photographerFirstName = photographer.name.split(" ")[0];
+  displayMediaGallery(sortedImgs, photographerFirstName);
 
   // Afficher le nombre de likes totaux en bas à droite
   displayLikeNPricing(
     imgs.map((img) => img.likes).reduce((a, b) => a + b),
     photographer.price
   );
+
+  // Changement de valeur pour le select de tri
+  addFilterListener();
 }
 init();
