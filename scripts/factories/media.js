@@ -25,6 +25,8 @@ function mediaFactory(
     if (image) {
       mediaElt = document.createElement("img");
       mediaElt.setAttribute("src", picture);
+      mediaElt.setAttribute("alt", "realisation photographe");
+      mediaElt.setAttribute("description", "");
     } else if (video) {
       mediaElt = document.createElement("video");
       mediaElt.innerHTML = `<source src="${picture}" type="video/mp4">
@@ -35,6 +37,7 @@ function mediaFactory(
     mediaElt.addEventListener("click", (e) => {
       const lightBox = lightBoxFactory(index, imgs_copy);
       const lightBoxElt = lightBox.createDOMelt();
+      lightBox.addKeyBoardNavListener();
       document.querySelector(lightboxCtrSelector).appendChild(lightBoxElt);
     }); // exécuter lightboxCB (comme une Fn) ds une Fn, permet de lui donner un paramètre
     const div = document.createElement("div");
@@ -72,6 +75,7 @@ function lightBoxFactory(index, imgs) {
   const img = document.createElement("img");
   const video = document.createElement("video");
   const title = document.createElement("h3");
+  let globalCtr;
   function updateMediaNTitle() {
     currentMedia = imgs[currentIndex];
     if (currentMedia.image) {
@@ -110,7 +114,7 @@ function lightBoxFactory(index, imgs) {
   }
 
   function createDOMelt() {
-    const globalCtr = document.createElement("div");
+    globalCtr = document.createElement("div");
     globalCtr.className = "lightbox-ctr";
     const closeBtn = document.createElement("button");
     closeBtn.className = "closing-LB";
@@ -148,5 +152,21 @@ function lightBoxFactory(index, imgs) {
 
     return globalCtr;
   }
-  return { createDOMelt };
+
+  function onKeyDown(e) {
+    if (e.key == "ArrowLeft") {
+      setCurrentIndexPrev();
+    } else if (e.key == "ArrowRight" || e.key == "Tab") {
+      setCurrentIndexNext();
+      // } else if (e.key == "Backspace" || e.key == "Escape") {
+      //   globalCtr.parentNode.removeChild(globalCtr);
+    }
+  }
+
+  function addKeyBoardNavListener() {
+    document.body.removeEventListener("keydown", onKeyDown);
+    document.body.addEventListener("keydown", onKeyDown);
+  }
+
+  return { createDOMelt, addKeyBoardNavListener };
 }
