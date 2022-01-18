@@ -125,7 +125,7 @@ function lightBoxFactory(index, imgs) {
       globalCtr.parentNode.removeChild(globalCtr); //pr fermer la lightbox, on se sert de son parent
     });
     const crossIcon = document.createElement("i");
-    crossIcon.className = "fas fa-times";
+    crossIcon.className = "fas fa-times fa-4x";
     crossIcon.setAttribute = ("name", "Close dialog");
     const chevronL = document.createElement("button");
     chevronL.setAttribute = ("name", "Previous image");
@@ -134,7 +134,7 @@ function lightBoxFactory(index, imgs) {
     });
     const chevronLIcon = document.createElement("i");
     chevronL.className = "chevron-left";
-    chevronLIcon.className = "fas fa-chevron-left";
+    chevronLIcon.className = "fas fa-chevron-left fa-4x";
     const chevronR = document.createElement("button");
     chevronR.setAttribute = ("name", "Next image");
     chevronR.addEventListener("click", () => {
@@ -142,7 +142,7 @@ function lightBoxFactory(index, imgs) {
     });
     const chevronRIcon = document.createElement("i");
     chevronR.className = "chevron-right";
-    chevronRIcon.className = "fas fa-chevron-right";
+    chevronRIcon.className = "fas fa-chevron-right fa-4x";
 
     updateMediaNTitle();
 

@@ -19,7 +19,8 @@ a {
 }
 
 .contact_button,
-.btn-submit {
+.btn-submit,
+.filter select {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -37,15 +38,18 @@ a {
   top: 5em;
 }
 .lightbox-ctr .chevron-left {
-  top: 50%;
+  top: 45%;
   left: 5em;
 }
 .lightbox-ctr .chevron-right {
-  top: 50%;
+  top: 45%;
   right: 5em;
 }
 .lightbox-ctr button {
   position: absolute;
+  border: none;
+  background: none;
+  color: #901c1c;
 }
 .lightbox-ctr h3 {
   position: absolute;
@@ -242,6 +246,12 @@ header {
   width: 230px;
   text-align: left;
 }
+.photograph-gallery .prez-img button {
+  border: none;
+  background: none;
+  font-size: 25px;
+  color: #901c1c;
+}
 
 .lightbox-ctr {
   position: fixed;
@@ -258,6 +268,17 @@ header {
   width: 80%;
   object-fit: cover;
   margin: 5% 10%;
+}
+
+.filter {
+  display: flex;
+  padding-top: 10px;
+}
+.filter select {
+  height: 60px;
+  margin-left: 10px;
+  padding: 5px 25px;
+  font-size: 15px;
 }
 
 .bottom-ctr {

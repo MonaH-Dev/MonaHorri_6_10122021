@@ -1,5 +1,6 @@
 .contact_button,
-.btn-submit {
+.btn-submit,
+.filter select {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -18,15 +19,18 @@
     top: 5em;
   }
   .chevron-left {
-    top: 50%;
+    top: 45%;
     left: 5em;
   }
   .chevron-right {
-    top: 50%;
+    top: 45%;
     right: 5em;
   }
   button {
     position: absolute;
+    border: none;
+    background: none;
+    color: $color-primary;
   }
   h3 {
     position: absolute;
