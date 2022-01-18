@@ -12,6 +12,7 @@ function photographerFactory(data, callback = null) {
     // ? : sépare les paramètres de l'adresse URL
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", `${name}`);
     const h2 = document.createElement("h2");
     h2.textContent = name;
     const h3 = document.createElement("h3");
@@ -50,6 +51,7 @@ function photographerFactory(data, callback = null) {
     contactButton.textContent = "Contactez-moi";
     contactButton.addEventListener("click", callback);
     const img = document.createElement("img");
+    img.setAttribute("alt", "");
     img.setAttribute("src", picture);
     article.appendChild(infoLeft);
     article.appendChild(contactButton);

@@ -56,6 +56,7 @@ function mediaFactory(
     }); // on peut ne pas mettre les "()" à e à une Fn fléchée si 1 seul paramètre
     const heartIcon = document.createElement("i");
     heartIcon.className = "fas fa-heart like-heart";
+    heartIcon.setAttribute("aria-label", likes);
 
     article.appendChild(mediaElt);
     article.appendChild(div);
@@ -73,6 +74,7 @@ function lightBoxFactory(index, imgs) {
   let currentIndex = index;
   let currentMedia = imgs[currentIndex];
   const img = document.createElement("img");
+  img.setAttribute("aria-label", "image closeup view");
   const video = document.createElement("video");
   const title = document.createElement("h3");
   let globalCtr;
@@ -116,6 +118,7 @@ function lightBoxFactory(index, imgs) {
   function createDOMelt() {
     globalCtr = document.createElement("div");
     globalCtr.className = "lightbox-ctr";
+    globalCtr.setAttribute = ("aria-label", "image closeup view");
     const closeBtn = document.createElement("button");
     closeBtn.className = "closing-LB";
     closeBtn.addEventListener("click", () => {
@@ -123,7 +126,9 @@ function lightBoxFactory(index, imgs) {
     });
     const crossIcon = document.createElement("i");
     crossIcon.className = "fas fa-times";
+    crossIcon.setAttribute = ("name", "Close dialog");
     const chevronL = document.createElement("button");
+    chevronL.setAttribute = ("name", "Previous image");
     chevronL.addEventListener("click", () => {
       setCurrentIndexPrev();
     });
@@ -131,6 +136,7 @@ function lightBoxFactory(index, imgs) {
     chevronL.className = "chevron-left";
     chevronLIcon.className = "fas fa-chevron-left";
     const chevronR = document.createElement("button");
+    chevronR.setAttribute = ("name", "Next image");
     chevronR.addEventListener("click", () => {
       setCurrentIndexNext();
     });
