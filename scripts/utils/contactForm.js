@@ -93,8 +93,20 @@ function formValidated() {
 theForm.addEventListener("submit", function (e) {
   if (!(fistNameOK && lastNameOK && emailOK)) {
     // ==> if (! (true)) ==> if false
+    if (!fistNameOK) {
+      firstNameMsgError.style.display = "block";
+    }
+    if (!lastNameOK) {
+      lastName.closest("div").querySelector(".msgError").style.display =
+        "block";
+    }
+    if (!emailOK) {
+      email.closest("div").querySelector(".msgError").style.display = "block";
+    }
     console.log("missing");
     return;
   }
   formValidated();
 });
+
+function setTabIndex(selector) {}

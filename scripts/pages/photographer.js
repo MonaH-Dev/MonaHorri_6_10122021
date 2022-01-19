@@ -102,6 +102,18 @@ function addFilterListener() {
     .addEventListener("change", onUpdateFilterSelect);
 }
 
+function addKeyDownListener() {
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+      console.log(e.target);
+      const lightBox = lightBoxFactory(e.target.dataset.index, sortedImgs);
+      const lightBoxElt = lightBox.createDOMelt();
+      // lightBox.addKeyBoardNavListener();
+      document.querySelector("#lightbox").appendChild(lightBoxElt);
+    }
+  });
+}
+
 async function init() {
   const id = getPhotographerIdByURLParam();
   const { photographer, imgs } = await getPhotographerInfo(id);
@@ -123,5 +135,6 @@ async function init() {
 
   // Changement de valeur pour le select de tri
   addFilterListener();
+  addKeyDownListener();
 }
 init();

@@ -33,11 +33,12 @@ function mediaFactory(
       <object data="${picture}">
       </object>`;
     }
-
+    mediaElt.setAttribute("tabindex", "0");
+    mediaElt.setAttribute("data-index", index); //"data-..." permet d'ajouter un prop
     mediaElt.addEventListener("click", (e) => {
       const lightBox = lightBoxFactory(index, imgs_copy);
       const lightBoxElt = lightBox.createDOMelt();
-      lightBox.addKeyBoardNavListener();
+      // lightBox.addKeyBoardNavListener();
       document.querySelector(lightboxCtrSelector).appendChild(lightBoxElt);
     }); // exécuter lightboxCB (comme une Fn) ds une Fn, permet de lui donner un paramètre
     const div = document.createElement("div");
@@ -71,7 +72,7 @@ function mediaFactory(
 }
 
 function lightBoxFactory(index, imgs) {
-  let currentIndex = index;
+  let currentIndex = parseInt(index);
   let currentMedia = imgs[currentIndex];
   const img = document.createElement("img");
   img.setAttribute("aria-label", "image closeup view");
@@ -80,6 +81,7 @@ function lightBoxFactory(index, imgs) {
   let globalCtr;
   function updateMediaNTitle() {
     currentMedia = imgs[currentIndex];
+    console.log(currentIndex);
     if (currentMedia.image) {
       img.src = `img/${currentMedia.photographerName}/${currentMedia.image}`;
       img.style.display = "block";
@@ -169,10 +171,10 @@ function lightBoxFactory(index, imgs) {
     }
   }
 
-  function addKeyBoardNavListener() {
-    document.body.removeEventListener("keydown", onKeyDown);
-    document.body.addEventListener("keydown", onKeyDown);
-  }
+  // function addKeyBoardNavListener() {
+  //   document.body.removeEventListener("keydown", onKeyDown);
+  //   document.body.addEventListener("keydown", onKeyDown);
+  // }
 
-  return { createDOMelt, addKeyBoardNavListener };
+  return { createDOMelt /*, addKeyBoardNavListener */ };
 }
