@@ -18,8 +18,8 @@ theForm.addEventListener("submit", (e) => {
 //#region REGEXP TOOLS
 // Validation Nom & Prénom
 function validateName(name) {
-  return /^[a-zA-ZÀ-ú -]{2,45}$/.test(String(name).trim());
-  // entre a et z (min ou maj) ac/ss accent, de 2 à 45 caractères
+  return /^[a-zA-ZÀ-ú -]{2,100}$/.test(String(name).trim());
+  // entre a et z (min ou maj) ac/ss accent, de 2 à 100 caractères
   // .test permet de tester la Regexp
   // .trim permet de supp les espaces
 }
@@ -43,7 +43,7 @@ firstName.addEventListener("input", function (e) {
   if (!validateName(e.target.value)) {
     //on pourrait remplacer e.target par fisrtName
     firstNameMsgError.style.display = "block";
-    firstName.style.border = "2px solid lightcoral";
+    firstName.style.border = "2px solid #901c1c";
   } else {
     firstNameMsgError.style.display = "none";
     firstName.style.border = "none";
@@ -58,11 +58,27 @@ let lastNameOK = false;
 lastName.addEventListener("input", function (e) {
   if (!validateName(e.target.value)) {
     lastName.closest("div").querySelector(".msgError").style.display = "block";
-    lastName.style.border = "2px solid lightcoral";
+    lastName.style.border = "2px solid #901c1c";
   } else {
     lastName.closest("div").querySelector(".msgError").style.display = "none";
     lastName.style.border = "none";
     lastNameOK = true;
+  }
+});
+//#endregion
+
+// Message textarea verification
+const message = document.querySelector("#message");
+let messageOK = false;
+
+message.addEventListener("input", function (e) {
+  if (!validateName(e.target.value)) {
+    message.closest("div").querySelector(".msgError").style.display = "block";
+    message.style.border = "2px solid #901c1c";
+  } else {
+    message.closest("div").querySelector(".msgError").style.display = "none";
+    message.style.border = "none";
+    messageOK = true;
   }
 });
 //#endregion
@@ -74,7 +90,7 @@ let emailOK = false;
 email.addEventListener("input", function (e) {
   if (!validateEmail(email.value)) {
     email.closest("div").querySelector(".msgError").style.display = "block";
-    email.style.border = "2px solid lightcoral";
+    email.style.border = "2px solid #901c1c";
   } else {
     email.closest("div").querySelector(".msgError").style.display = "none";
     email.style.border = "none";
@@ -91,7 +107,7 @@ function formValidated() {
 
 //  SUBMIT - LAST verification
 theForm.addEventListener("submit", function (e) {
-  if (!(fistNameOK && lastNameOK && emailOK)) {
+  if (!(fistNameOK && lastNameOK && emailOK && messageOK)) {
     // ==> if (! (true)) ==> if false
     if (!fistNameOK) {
       firstNameMsgError.style.display = "block";
@@ -103,6 +119,10 @@ theForm.addEventListener("submit", function (e) {
     if (!emailOK) {
       email.closest("div").querySelector(".msgError").style.display = "block";
     }
+    if (!messageOK) {
+      message.closest("div").querySelector(".msgError").style.display = "block";
+    }
+
     console.log("missing");
     return;
   }

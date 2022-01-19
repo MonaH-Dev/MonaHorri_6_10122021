@@ -62,7 +62,10 @@
           </div>
           <div>
             <label for="message" tabindex="0">Message</label>
-            <input type="text" id="message" name="message"/>
+            <textarea type="text" minlength="10" rows="3" cols="42" id="message" name="message" style="font-size:25px"></textarea>
+            <span class="msgError">
+              Veuillez taper votre demande (jusqu'à 100 caractères)</span
+            >
           </div>
           <div>
           <input class="btn-submit" type="submit" value="Envoyer" />

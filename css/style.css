@@ -113,15 +113,17 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 25px;
 }
 
 .msgError {
   display: none;
+  color: #901c1c;
 }
 
 .remerciement {
   display: none;
-  width: 91%;
+  width: 95%;
   height: 55%;
   position: absolute;
   margin: auto;
