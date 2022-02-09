@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
+    href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+    rel="stylesheet"
+  />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -34,11 +36,11 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="croix pour fermer"/>
         </header>
         <form id="theForm" tabindex="0">
           <div class="firstNameData" tabindex="-1">
-            <label for="firstName" tabindex="0">Prénom</label>
+            <label for="firstname" tabindex="0">Prénom</label>
             <input type="text" id="firstname" name="firstname" minlength="2" />
             <span class="msgError">
               Veuillez entrer 2 caractères ou plus pour le champ du
@@ -46,7 +48,7 @@
               >
           </div>
           <div>
-            <label for="lastName" tabindex="0">Nom</label>
+            <label for="lastname" tabindex="0">Nom</label>
             <input type="text" id="lastname" name="lastname" minlength="2" />
             <span class="msgError">
               Veuillez entrer 2 caractères ou plus pour le champ du
@@ -87,4 +89,5 @@
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
   </body>
-</html>
+</html> 
+

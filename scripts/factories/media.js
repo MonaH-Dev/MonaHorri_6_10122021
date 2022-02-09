@@ -50,6 +50,7 @@ function mediaFactory(
     const nLike = document.createElement("span");
     nLike.textContent = likes;
     const buttonLike = document.createElement("button");
+    buttonLike.setAttribute("aria-labelledby", "like-button-icon-" + index);
     buttonLike.addEventListener("click", () => {
       onLikeIncrement(); // update le nbre total de coeurs (ds bottom-Ctr)
       const newLike = parseInt(nLike.textContent) + 1; //update le nbre coeur
@@ -57,7 +58,8 @@ function mediaFactory(
     }); // on peut ne pas mettre les "()" à e à une Fn fléchée si 1 seul paramètre
     const heartIcon = document.createElement("i");
     heartIcon.className = "fas fa-heart like-heart";
-    heartIcon.setAttribute("aria-label", likes);
+    heartIcon.setAttribute("aria-label", "likes");
+    heartIcon.id = "like-button-icon-" + index;
 
     article.appendChild(mediaElt);
     article.appendChild(div);
@@ -75,6 +77,7 @@ function lightBoxFactory(index, imgs) {
   let currentIndex = parseInt(index);
   let currentMedia = imgs[currentIndex];
   const img = document.createElement("img");
+  img.setAttribute("alt", title);
   img.setAttribute("aria-label", "image closeup view");
   const video = document.createElement("video");
   const title = document.createElement("h3");
